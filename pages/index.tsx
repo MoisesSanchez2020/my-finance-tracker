@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+
 import Navbar from '../components/Navbar';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css'; // Default styling
@@ -25,7 +26,7 @@ const Home = () => {
 
   // Mapping records to dates for calendar highlighting
   const recordDates = records.map(record => new Date(record.date));
-  
+
   // Subtract the entered amount from the remaining budget
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
