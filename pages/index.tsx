@@ -3,7 +3,7 @@ import Navbar from '../components/Navbar';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css'; // Default styling
 
-// Define the structure of your financial records
+// FinancialRecord interface to define the structure of financial records
 interface FinancialRecord {
   amount: string;
   description: string;
@@ -12,6 +12,7 @@ interface FinancialRecord {
 }
 
 const Home = () => {
+  // useState hooks for managing various states in the component
   const [amount, setAmount] = useState('');
   const [description, setDescription] = useState('');
   const [category, setCategory] = useState('');
@@ -19,14 +20,21 @@ const Home = () => {
   const [records, setRecords] = useState<FinancialRecord[]>([]);
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
   const [showBubble, setShowBubble] = useState(false);
+  const [monthlyBudget, setMonthlyBudget] = useState(0);
+  const [remainingBudget, setRemainingBudget] = useState(0);
 
-  // Extract dates from records for highlighting on the calendar
+  // Mapping records to dates for calendar highlighting
   const recordDates = records.map(record => new Date(record.date));
-
+  
+  // Subtract the entered amount from the remaining budget
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
     const newRecord: FinancialRecord = { amount, description, category, date };
     setRecords([...records, newRecord]);
+
+    // Subtract from the remaining budget
+    setRemainingBudget((prevBudget) => prevBudget - parseFloat(amount));
+
     // Reset the form fields
     setAmount('');
     setDescription('');
@@ -34,18 +42,20 @@ const Home = () => {
     setDate('');
   };
 
+  const handleBudgetSubmit = (event: React.FormEvent) => {
+    event.preventDefault();
+    setRemainingBudget(monthlyBudget);
+  };
+
   const handleDayClick = (value: Date, event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     setSelectedDate(value);
     setShowBubble(true);
-
 
     setTimeout(() => {
       setShowBubble(false);
     }, 3000); // Hide the bubble after 3 seconds
   };
 
-
-  // Filter records by selected date
   const filteredRecords = selectedDate
     ? records.filter(record => new Date(record.date).toDateString() === selectedDate.toDateString())
     : [];
@@ -54,6 +64,21 @@ const Home = () => {
     <div>
       <Navbar />
       <main className="p-4">
+        {/* Monthly Budget Form */}
+        <form onSubmit={handleBudgetSubmit} className="budget-form max-w-md mx-auto">
+          <div className="mb-4">
+            <label htmlFor="monthlyBudget" className="block">Monthly Budget:</label>
+            <input type="number" id="monthlyBudget" value={monthlyBudget} onChange={(e) => setMonthlyBudget(parseFloat(e.target.value))} className="w-full" />
+          </div>
+          <button type="submit" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Set Budget</button>
+        </form>
+
+        {/* Remaining Budget */}
+        <div className="remaining-budget">
+          <h3>Remaining Budget: ${remainingBudget.toFixed(2)}</h3>
+        </div>
+
+        {/* Finance Tracker Form */}
         <h1 className="text-2xl font-bold text-center my-4">Finance Tracker</h1>
         <form onSubmit={handleSubmit} className="max-w-md mx-auto">
           {/* Form fields */}
@@ -75,7 +100,7 @@ const Home = () => {
           </div>
           <button type="submit" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Submit</button>
         </form>
-        
+
         {/* Records list */}
         <div className="mt-8">
           <h2 className="text-lg font-semibold">Records:</h2>
@@ -100,7 +125,7 @@ const Home = () => {
                 recordDate.getMonth() === date.getMonth() &&
                 recordDate.getFullYear() === date.getFullYear()
               )) {
-                return 'highlight'; // A class to highlight the tile
+                return 'highlight';
               }
             }}
           />
@@ -109,7 +134,6 @@ const Home = () => {
         {/* Bubble for displaying records */}
         {showBubble && selectedDate && (
           <div className="bubble">
-            {/* Records for the selected date */}
             {filteredRecords.length > 0 ? (
               filteredRecords.map((record, index) => (
                 <div key={index}>
@@ -122,6 +146,7 @@ const Home = () => {
           </div>
         )}
       </main>
+      {/* Style section */}
       <style jsx global>{`
         .calendar-container .react-calendar {
           width: 100%;
