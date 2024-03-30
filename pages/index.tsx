@@ -151,8 +151,8 @@ const Home = () => {
       <style jsx global>{`
         .calendar-container .react-calendar {
           width: 100%;
-          max-width: 1000px;
-          font-size: 1.3em;
+          max-width: 1500px;
+          font-size: 1.5em;
         }
 
         .highlight {

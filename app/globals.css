@@ -97,3 +97,22 @@ body {
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
+/* Inside globals.css */
+
+
+.digital-clock {
+  font-size: 20px;
+  text-align: center;
+  margin: 20px auto; /* Center the clock horizontally */
+  background-color: white; /* Set the background color to white */
+  width: 200px; /* Width of the square */
+  height: 70px; /* Height of the square, equal to width to form a perfect square */
+  display: flex; /* Use flexbox for centering content */
+  align-items: center; /* Vertically center the content */
+  justify-content: center; /* Horizontally center the content */
+  border: 1px solid #ddd; /* Optional: Add a border to the square */
+  border-radius: 10px; /* Optional: Round the corners of the square */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Add a subtle shadow for depth */
+}
+

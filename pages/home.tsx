@@ -3,6 +3,7 @@
 import React from 'react';
 import { useRouter } from 'next/router';
 import Navbar from '../components/Navbar';
+import DigitalClock from '../components/DigitalClock'; // Make sure to create this component
 
 const Home: React.FC = () => {
   const router = useRouter();
@@ -16,8 +17,8 @@ const Home: React.FC = () => {
     <div style={backgroundStyle}>
       <Navbar />
       <main className="home-content">
+        <DigitalClock /> {/* Digital Clock component added */}
         <h1>Welcome to the Personal Finance Manager</h1>
-     
         <button 
           onClick={navigateToTracker} 
           className="start-button"
@@ -25,9 +26,6 @@ const Home: React.FC = () => {
           Go to Finance Tracker
         </button>
       </main>
-      
-
-
     </div>
   );
 };
