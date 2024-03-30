@@ -21,7 +21,7 @@ For this project, I used the following tools and technologies:
 {Make a list of websites that you found helpful in this project}
 
 - (https://www.typescriptlang.org/docs/)
-- [(https://developer.mozilla.org/en-US/)
+- (https://developer.mozilla.org/en-US/)
 
 # Future Work
 

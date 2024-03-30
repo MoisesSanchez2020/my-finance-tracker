@@ -147,30 +147,7 @@ const Home = () => {
           </div>
         )}
       </main>
-      {/* Style section */}
-      <style jsx global>{`
-        .calendar-container .react-calendar {
-          width: 100%;
-          max-width: 1000px;
-          font-size: 1.3em;
-        }
-
-        .highlight {
-          background-color: #b6e0fe;
-        }
-
-        .bubble {
-          position: absolute;
-          background-color: red;
-          border: 1px solid #ddd;
-          padding: 10px;
-          border-radius: 8px;
-          box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
-        }
-      `}</style>
+     
     </div>
   );
 };

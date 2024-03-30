@@ -31,3 +31,69 @@ body {
     text-wrap: balance;
   }
 }
+
+/* Inside globals.css */
+
+.home-content {
+  padding: 20px;
+  text-align: center;
+  font-weight: bold;
+  border-radius: 15px;
+  margin: auto;
+  max-width: 800px;
+}
+
+.home-content h1 {
+  color: #f5f5f7;
+  font-size: 3.5em;
+  margin-bottom: 20px;
+}
+
+.home-content p {
+  color: #424bed;
+  font-size: 1.3em;
+  line-height: 1.5;
+  font-weight: bold;
+}
+
+.start-button {
+  background-color: #635ae6;
+  color: white;
+  border: 1px solid white;
+  border-radius: 50%;
+  width: 50vw;
+  height: 50vw;
+  max-width: 350px;
+  max-height: 350px;
+  font-size: 46px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10vh auto;
+  position: relative;
+  z-index: 2;
+}
+/* Inside globals.css */
+
+.calendar-container .react-calendar {
+  width: 100%;
+  max-width: 1000px;
+  font-size: 1.3em;
+}
+
+.highlight {
+  background-color: #b6e0fe;
+}
+
+.bubble {
+  position: absolute;
+  background-color: red;
+  border: 1px solid #ddd;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
