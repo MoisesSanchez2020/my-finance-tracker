@@ -4,7 +4,7 @@ The software I developed is a comprehensive finance tracker application. This pr
 
 The purpose behind this software was to challenge myself with a project that would require a nuanced understanding of TypeScript's features, such as interfaces and type annotations, and to see how they integrate with a modern JavaScript framework like React.
 
-[Software Demo Video](https://youtu.be/viKlbw7ifV0?si=gCCgjBG53DkZbW3y)
+[Software Demo Video](https://youtu.be/d2GL9NW29nw)
 
 # Development Environment
 
